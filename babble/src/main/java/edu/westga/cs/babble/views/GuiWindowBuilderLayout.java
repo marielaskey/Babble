@@ -3,6 +3,9 @@ package edu.westga.cs.babble.views;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import edu.westga.cs.babble.model.Tile;
+
 import javax.swing.JList;
 import javax.swing.JButton;
 
@@ -15,6 +18,7 @@ import javax.swing.JButton;
  *
  */
 public class GuiWindowBuilderLayout extends JFrame {
+	private static final long serialVersionUID = 8404049378028182418L;
 	protected JTextField textFieldWord;
 	protected JTextField textFieldScore;
 	protected JTextField textFieldInformation;
@@ -29,7 +33,9 @@ public class GuiWindowBuilderLayout extends JFrame {
 		lblTileLabel.setBounds(30, 5, 434, 14);
 		getContentPane().add(lblTileLabel);
 		
-		JList letters = new JList();
+		JList<Tile> letters = new JList<Tile>();
+		letters.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		letters.setToolTipText("letters");
 		letters.setBounds(30, 30, 300, 22);
 		getContentPane().add(letters);
 		
