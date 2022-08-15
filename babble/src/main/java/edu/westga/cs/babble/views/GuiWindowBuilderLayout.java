@@ -8,6 +8,7 @@ import edu.westga.cs.babble.model.Tile;
 
 import javax.swing.JList;
 import javax.swing.JButton;
+import java.awt.Dimension;
 
 /**
  * 
@@ -22,21 +23,25 @@ public class GuiWindowBuilderLayout extends JFrame {
 	protected JTextField textFieldWord;
 	protected JTextField textFieldScore;
 	protected JTextField textFieldInformation;
+	protected JList<Tile> letters;
+	protected JButton btnResetButton;
+	protected JButton btnPlayButton;
 	
 	/**
 	 * Constructor for GuiWindowBuilderLayout
 	 */
 	public GuiWindowBuilderLayout() {
+		setSize(new Dimension(450, 300));
 		getContentPane().setLayout(null);
 		
 		JLabel lblTileLabel = new JLabel("Tiles");
 		lblTileLabel.setBounds(30, 5, 434, 14);
 		getContentPane().add(lblTileLabel);
 		
-		JList<Tile> letters = new JList<Tile>();
-		letters.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		letters.setToolTipText("letters");
-		letters.setBounds(30, 30, 300, 22);
+		this.letters = new JList<Tile>();
+		this.letters.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		this.letters.setToolTipText("letters");
+		this.letters.setBounds(30, 30, 300, 22);
 		getContentPane().add(letters);
 		
 		JLabel lblWordLabel = new JLabel("Your Word");
@@ -49,19 +54,19 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.textFieldWord);
 		this.textFieldWord.setColumns(10);
 		
-		JButton btnResetButton = new JButton("Reset");
-		btnResetButton.setToolTipText("reset letters");
-		btnResetButton.setBounds(116, 130, 89, 23);
+		this.btnResetButton = new JButton("Reset");
+		this.btnResetButton.setToolTipText("reset letters");
+		this.btnResetButton.setBounds(105, 130, 100, 23);
 		getContentPane().add(btnResetButton);
 		
-		JButton btnPlayButton = new JButton("Play Word");
-		btnPlayButton.setToolTipText("play word");
-		btnPlayButton.setBounds(241, 130, 89, 23);
+		this.btnPlayButton = new JButton("Play Word");
+		this.btnPlayButton.setToolTipText("play word");
+		this.btnPlayButton.setBounds(230, 130, 100, 23);
 		getContentPane().add(btnPlayButton);
 		
 		JLabel lblScoreLabel = new JLabel("Score:");
 		lblScoreLabel.setToolTipText("");
-		lblScoreLabel.setBounds(178, 164, 46, 14);
+		lblScoreLabel.setBounds(165, 164, 46, 14);
 		getContentPane().add(lblScoreLabel);
 		
 		this.textFieldScore = new JTextField();

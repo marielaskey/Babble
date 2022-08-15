@@ -1,5 +1,6 @@
 package edu.westga.cs.babble.views;
 
+import edu.westga.cs.babble.model.EmptyTileBagException;
 import edu.westga.cs.babble.model.PlayedWord;
 import edu.westga.cs.babble.model.TileBag;
 import edu.westga.cs.babble.model.TileGroup;
@@ -19,9 +20,21 @@ public class GuiController {
 	private PlayedWord word;
 	private TileGroup gameTileGroup;
 	private TileRack gameTileRack;
+	private TileListModel tileList;
 	
+	/**
+	 * Constructor for GuiController
+	 */
 	public GuiController() {
-		
+		this.gameBag = new TileBag();
+		this.tileList = new TileListModel();
+		while (this.tileList.getNumberOfTilesNeeded() > 0) {
+			try {
+				this.tileList.append(this.gameBag.drawTile());
+			} catch(EmptyTileBagException exception) {
+				
+			}
+		}
 	}
 
 	/**
@@ -57,7 +70,16 @@ public class GuiController {
 	 * @return the gameTileRack
 	 */
 	public TileRack getGameTileRack() {
-		return gameTileRack;
+		return this.gameTileRack;
+	}
+	
+	/**
+	 * getter method for TileList
+	 * 
+	 * @return the tileList
+	 */
+	public TileListModel getTileList() {
+		return this.tileList;
 	}
 
 	
