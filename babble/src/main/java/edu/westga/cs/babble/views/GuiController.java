@@ -31,7 +31,7 @@ public class GuiController {
 		while (this.tileList.getNumberOfTilesNeeded() > 0) {
 			try {
 				this.tileList.append(this.gameBag.drawTile());
-			} catch(EmptyTileBagException exception) {
+			} catch (EmptyTileBagException exception) {
 				
 			}
 		}

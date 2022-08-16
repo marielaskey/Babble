@@ -34,13 +34,11 @@ public class TileListModel extends TileRack implements ListModel<Tile> {
 
 	@Override
 	public void addListDataListener(ListDataListener li) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void removeListDataListener(ListDataListener li) {
-		// TODO Auto-generated method stub
 		
 	}
 

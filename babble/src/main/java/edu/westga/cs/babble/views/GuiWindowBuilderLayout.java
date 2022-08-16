@@ -39,10 +39,11 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(lblTileLabel);
 		
 		this.letters = new JList<Tile>();
+		this.letters.setVisibleRowCount(1);
 		this.letters.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		this.letters.setToolTipText("letters");
 		this.letters.setBounds(30, 30, 300, 22);
-		getContentPane().add(letters);
+		getContentPane().add(this.letters);
 		
 		JLabel lblWordLabel = new JLabel("Your Word");
 		lblWordLabel.setBounds(30, 70, 83, 14);
@@ -57,12 +58,12 @@ public class GuiWindowBuilderLayout extends JFrame {
 		this.btnResetButton = new JButton("Reset");
 		this.btnResetButton.setToolTipText("reset letters");
 		this.btnResetButton.setBounds(105, 130, 100, 23);
-		getContentPane().add(btnResetButton);
+		getContentPane().add(this.btnResetButton);
 		
 		this.btnPlayButton = new JButton("Play Word");
 		this.btnPlayButton.setToolTipText("play word");
 		this.btnPlayButton.setBounds(230, 130, 100, 23);
-		getContentPane().add(btnPlayButton);
+		getContentPane().add(this.btnPlayButton);
 		
 		JLabel lblScoreLabel = new JLabel("Score:");
 		lblScoreLabel.setToolTipText("");
