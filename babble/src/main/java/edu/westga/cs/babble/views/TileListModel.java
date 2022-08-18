@@ -1,5 +1,7 @@
 package edu.westga.cs.babble.views;
 
+import java.util.ArrayList;
+
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
@@ -14,12 +16,14 @@ import edu.westga.cs.babble.model.TileRack;
  *
  */
 public class TileListModel extends TileRack implements ListModel<Tile> {
+	
+	private ArrayList<Tile> removedTiles;
 
 	/**
 	 * Constructor for the Tile List model
 	 */
 	public TileListModel() {
-		
+		this.removedTiles = new ArrayList<Tile>();
 	}
 
 	@Override
@@ -43,12 +47,22 @@ public class TileListModel extends TileRack implements ListModel<Tile> {
 	}
 	
 	/**
-	 * Removes the element (letter) at a specified index
+	 * Removes a specified tile (letter) from the tile rack
 	 * 
-	 * @param index the index for the element in the array to be removed
+	 * @param tile the tile to be removed
 	 */
-	public void removeElementAt(int index) {
-		super.tiles().remove(index);
+	public void removeTile(Tile tile) {
+		super.tiles().remove(tile);
+		this.removedTiles.add(tile);
+	}
+	
+	/**
+	 * Resets tiles, returning removed tiles to the tile rack
+	 * 
+	 */
+	public void resetTiles() {
+		super.tiles().addAll(this.removedTiles);
+		this.removedTiles.clear();
 	}
 
 }

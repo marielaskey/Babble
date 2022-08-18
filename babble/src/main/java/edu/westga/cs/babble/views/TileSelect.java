@@ -39,9 +39,9 @@ public class TileSelect implements MouseListener {
 		} catch (BadLocationException exception) {
 			System.out.println(exception.getMessage());
 		}
-		int selectedTile = letters.getSelectedIndex();
+		Tile selectedTile = letters.getSelectedValue();
 		TileListModel listModel = (TileListModel) letters.getModel();
-		listModel.removeElementAt(selectedTile);
+		listModel.removeTile(selectedTile);
 	}
 
 	@Override
