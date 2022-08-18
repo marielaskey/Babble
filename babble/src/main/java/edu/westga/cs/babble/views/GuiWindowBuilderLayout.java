@@ -50,6 +50,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(lblWordLabel);
 		
 		this.textFieldWord = new JTextField();
+		this.textFieldWord.setEditable(false);
 		this.textFieldWord.setToolTipText("your word");
 		this.textFieldWord.setBounds(30, 90, 300, 20);
 		getContentPane().add(this.textFieldWord);

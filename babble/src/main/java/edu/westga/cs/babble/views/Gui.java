@@ -1,5 +1,7 @@
 package edu.westga.cs.babble.views;
 
+import javax.swing.text.Document;
+
 /**
  * Class for additional GUI configuration
  * 
@@ -20,6 +22,19 @@ public class Gui extends GuiWindowBuilderLayout {
 		super.letters.setModel(this.guiController.getTileList());
 		TileRenderer renderer = new TileRenderer();
 		super.letters.setCellRenderer(renderer);
+		TileSelect tileSelect = new TileSelect(this);
+		super.letters.addMouseListener(tileSelect);
+		PlayedWordDocument playedWordDoc = new PlayedWordDocument();
+		super.textFieldWord.setDocument(playedWordDoc);
+	}
+	
+	/**
+	 * Getter method for the document for PlayedWordDocument
+	 * 
+	 * @return the playedWordDoc
+	 */
+	public Document getPlayedWordDoc() {
+		return super.textFieldWord.getDocument();
 	}
 	
 }

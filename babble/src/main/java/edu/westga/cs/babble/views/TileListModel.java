@@ -41,5 +41,14 @@ public class TileListModel extends TileRack implements ListModel<Tile> {
 	public void removeListDataListener(ListDataListener li) {
 		
 	}
+	
+	/**
+	 * Removes the element (letter) at a specified index
+	 * 
+	 * @param index the index for the element in the array to be removed
+	 */
+	public void removeElementAt(int index) {
+		super.tiles().remove(index);
+	}
 
 }
