@@ -27,7 +27,7 @@ public class TileSelect implements MouseListener {
 	public TileSelect(Gui gui) {
 		this.theGui = gui;
 	}
-
+	
 	@Override
 	public void mouseClicked(MouseEvent event) {
 		@SuppressWarnings("unchecked")
@@ -39,9 +39,9 @@ public class TileSelect implements MouseListener {
 		} catch (BadLocationException exception) {
 			System.out.println(exception.getMessage());
 		}
-		Tile selectedTile = letters.getSelectedValue();
 		TileListModel listModel = (TileListModel) letters.getModel();
-		listModel.removeTile(selectedTile);
+		listModel.removeTile(tile);
+		this.theGui.repaint();
 	}
 
 	@Override
@@ -63,5 +63,5 @@ public class TileSelect implements MouseListener {
 	public void mouseExited(MouseEvent event) {
 
 	}
-
+	
 }
