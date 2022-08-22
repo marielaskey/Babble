@@ -1,5 +1,6 @@
 package edu.westga.cs.babble.views;
 
+import edu.westga.cs.babble.controllers.WordDictionary;
 import edu.westga.cs.babble.model.EmptyTileBagException;
 import edu.westga.cs.babble.model.PlayedWord;
 import edu.westga.cs.babble.model.TileBag;
@@ -21,6 +22,8 @@ public class GuiController {
 	private TileGroup gameTileGroup;
 	private TileRack gameTileRack;
 	private TileListModel tileList;
+	private WordDictionary gameDictionary;
+	private int score;
 	
 	/**
 	 * Constructor for GuiController
@@ -35,6 +38,7 @@ public class GuiController {
 				
 			}
 		}
+		this.gameDictionary = new WordDictionary();
 	}
 
 	/**
@@ -80,6 +84,56 @@ public class GuiController {
 	 */
 	public TileListModel getTileList() {
 		return this.tileList;
+	}
+
+	/**
+	 * getter for the dictionary used in the game
+	 * 
+	 * @return the gameDictionary
+	 */
+	public WordDictionary getGameDictionary() {
+		return this.gameDictionary;
+	}
+
+	/**
+	 * getter for the amount of points scored
+	 * 
+	 * @return the score
+	 */
+	public int getScore() {
+		return this.score;
+	}
+
+	/**
+	 * setter for the game score
+	 * 
+	 * @param score the score to set
+	 */
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	/**
+	 * increments the game's total score
+	 * 
+	 * @param score the score to set
+	 */
+	public void addScore(int score) {
+		this.score += score;
+	}
+	
+	/**
+	 * Method to replenish the GUI's tile rack after a word is played
+	 * 
+	 */
+	public void addTiles() {
+		while (this.tileList.getNumberOfTilesNeeded() > 0) {
+			try {
+				this.tileList.append(this.gameBag.drawTile());
+			} catch (EmptyTileBagException exception) {
+				
+			}
+		}
 	}
 
 }

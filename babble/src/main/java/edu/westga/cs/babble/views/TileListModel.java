@@ -64,5 +64,13 @@ public class TileListModel extends TileRack implements ListModel<Tile> {
 		super.tiles().addAll(this.removedTiles);
 		this.removedTiles.clear();
 	}
+	
+	/**
+	 * Removes tiles from play once they've been played in a valid word.
+	 * 
+	 */
+	public void removeTiles() {
+		this.removedTiles.clear();
+	}
 
 }

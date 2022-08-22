@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
+import edu.westga.cs.babble.controllers.WordDictionary;
+import edu.westga.cs.babble.model.PlayedWord;
+
 /**
  * Class for additional GUI configuration
  * 
@@ -31,6 +34,7 @@ public class Gui extends GuiWindowBuilderLayout {
 		PlayedWordDocument playedWordDoc = new PlayedWordDocument();
 		super.textFieldWord.setDocument(playedWordDoc);
 		super.btnResetButton.addActionListener(new ResetListener());
+		super.btnPlayButton.addActionListener(new PlayedWordListener());
 	}
 
 	/**
@@ -48,15 +52,45 @@ public class Gui extends GuiWindowBuilderLayout {
 		public void actionPerformed(ActionEvent event) {
 			Gui.this.guiController.getTileList().resetTiles();
 			Gui.this.letters.setSelectedIndex(0);
-			Document playedWord = Gui.this.getPlayedWordDoc();
+			Document playedWordDoc = Gui.this.getPlayedWordDoc();
 			try {
-				playedWord.remove(0, playedWord.getLength());
+				playedWordDoc.remove(0, playedWordDoc.getLength());
 			} catch (BadLocationException exception) {
 				System.out.println(exception.getMessage());
 			}
 			Gui.this.repaint();
 		}
 
+	}
+	
+	private class PlayedWordListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			Document playedWordDoc = Gui.this.getPlayedWordDoc();
+			String playedWordText;
+			try {
+				playedWordText = playedWordDoc.getText(0, playedWordDoc.getLength());
+				WordDictionary gameDictionary = Gui.this.guiController.getGameDictionary();
+				if (gameDictionary.isValidWord(playedWordText)) {
+					PlayedWord validWord = new PlayedWord(playedWordText);
+					Gui.this.guiController.addScore(validWord.getScore());
+					Gui.this.textFieldInformation
+							.setText("Played \"" + playedWordText + "\" for " + validWord.getScore() + " points");
+					Gui.this.textFieldScore.setText(Gui.this.guiController.getScore() + " points");
+					playedWordDoc.remove(0, playedWordDoc.getLength());
+					Gui.this.guiController.getTileList().removeTiles();
+					Gui.this.guiController.addTiles();
+				} else {
+					Gui.this.textFieldInformation.setText("Not a valid word: " + playedWordText);
+				}
+			} catch (BadLocationException exception) {
+				System.out.println(exception.getLocalizedMessage());
+			}
+
+			Gui.this.repaint();
+		}
+		
 	}
 
 }
