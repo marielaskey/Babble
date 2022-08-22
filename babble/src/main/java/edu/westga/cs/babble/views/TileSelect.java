@@ -4,8 +4,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JList;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 
 import edu.westga.cs.babble.model.Tile;
 
@@ -32,13 +30,9 @@ public class TileSelect implements MouseListener {
 	public void mouseClicked(MouseEvent event) {
 		@SuppressWarnings("unchecked")
 		JList<Tile> letters = (JList<Tile>) event.getComponent();
-		Document playedWordDoc = this.theGui.getPlayedWordDoc();
+		PlayedWordDocument playedWordDoc = (PlayedWordDocument) this.theGui.getPlayedWordDoc();
 		Tile tile = letters.getSelectedValue();
-		try {
-			playedWordDoc.insertString(playedWordDoc.getLength(), String.valueOf(tile.getLetter()), null);
-		} catch (BadLocationException exception) {
-			System.out.println(exception.getMessage());
-		}
+		playedWordDoc.insertTile(tile);
 		TileListModel listModel = (TileListModel) letters.getModel();
 		listModel.removeTile(tile);
 		this.theGui.repaint();

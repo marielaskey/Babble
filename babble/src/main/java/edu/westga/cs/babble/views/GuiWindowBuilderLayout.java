@@ -67,7 +67,6 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.btnPlayButton);
 		
 		JLabel lblScoreLabel = new JLabel("Score:");
-		lblScoreLabel.setToolTipText("");
 		lblScoreLabel.setBounds(165, 164, 46, 14);
 		getContentPane().add(lblScoreLabel);
 		
