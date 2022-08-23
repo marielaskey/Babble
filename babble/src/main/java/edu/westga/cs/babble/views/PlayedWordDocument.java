@@ -1,6 +1,5 @@
 package edu.westga.cs.babble.views;
 
-import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
@@ -22,11 +21,6 @@ public class PlayedWordDocument extends PlainDocument {
 	 */
 	public PlayedWordDocument() {
 		
-	}
-
-	@Override
-		public void insertString(int offset, String str, AttributeSet set) throws BadLocationException {
-		super.insertString(offset, str, set);
 	}
 	
 	/**

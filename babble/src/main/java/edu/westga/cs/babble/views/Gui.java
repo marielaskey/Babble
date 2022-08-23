@@ -33,6 +33,10 @@ public class Gui extends GuiWindowBuilderLayout {
 		super.letters.addMouseListener(tileSelect);
 		PlayedWordDocument playedWordDoc = new PlayedWordDocument();
 		super.textFieldWord.setDocument(playedWordDoc);
+		ScoreDocument scoreDoc = new ScoreDocument();
+		super.textFieldScore.setDocument(scoreDoc);
+		InformationDocument infoDoc = new InformationDocument();
+		super.textFieldInformation.setDocument(infoDoc);
 		super.btnResetButton.addActionListener(new ResetListener());
 		super.btnPlayButton.addActionListener(new PlayedWordListener());
 	}
@@ -68,6 +72,8 @@ public class Gui extends GuiWindowBuilderLayout {
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			Document playedWordDoc = Gui.this.getPlayedWordDoc();
+			ScoreDocument scoreDoc = (ScoreDocument) Gui.this.textFieldScore.getDocument();
+			InformationDocument infoDoc = (InformationDocument) Gui.this.textFieldInformation.getDocument();
 			String playedWordText;
 			try {
 				playedWordText = playedWordDoc.getText(0, playedWordDoc.getLength());
@@ -75,14 +81,14 @@ public class Gui extends GuiWindowBuilderLayout {
 				if (gameDictionary.isValidWord(playedWordText)) {
 					PlayedWord validWord = new PlayedWord(playedWordText);
 					Gui.this.guiController.addScore(validWord.getScore());
-					Gui.this.textFieldInformation
-							.setText("Played \"" + playedWordText + "\" for " + validWord.getScore() + " points");
-					Gui.this.textFieldScore.setText(Gui.this.guiController.getScore() + " points");
+					infoDoc
+						.setInfoText("Played \"" + playedWordText + "\" for " + validWord.getScore() + " points");
+					scoreDoc.setScoreText(Gui.this.guiController.getScore());
 					playedWordDoc.remove(0, playedWordDoc.getLength());
 					Gui.this.guiController.getTileList().removeTiles();
 					Gui.this.guiController.addTiles();
 				} else {
-					Gui.this.textFieldInformation.setText("Not a valid word: " + playedWordText);
+					infoDoc.setInfoText("Not a valid word: " + playedWordText);
 				}
 			} catch (BadLocationException exception) {
 				System.out.println(exception.getLocalizedMessage());
