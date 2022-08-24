@@ -3,6 +3,7 @@ package edu.westga.cs.babble.model;
 /**
  * Data class for a letter tile with a point value
  * @author lewisb
+ * @version 6241
  *
  */
 public class Tile {
@@ -13,7 +14,7 @@ public class Tile {
 	 * @param letter a letter A-Z or a-z
 	 */
 	public Tile(char letter) {
-		if(!Character.isAlphabetic(letter)) {
+		if (!Character.isAlphabetic(letter)) {
 			throw new IllegalArgumentException("letter must be between A and Z");
 		}
 		
@@ -44,23 +45,17 @@ public class Tile {
 		
 		if (onePointLetters.contains(ltr)) {
 			return 1;
-		}
-		else if (twoPointLetters.contains(ltr)) {
+		}	else if (twoPointLetters.contains(ltr)) {
 			return 2;
-		}
-		else if (threePointLetters.contains(ltr)) {
+		}	else if (threePointLetters.contains(ltr)) {
 			return 3;
-		}
-		else if (fourPointLetters.contains(ltr)) {
+		}	else if (fourPointLetters.contains(ltr)) {
 			return 4;
-		}
-		else if (fivePointLetters.contains(ltr)) {
+		}	else if (fivePointLetters.contains(ltr)) {
 			return 5;
-		}
-		else if (eightPointLetters.contains(ltr)) {
+		}	else if (eightPointLetters.contains(ltr)) {
 			return 8;
-		}
-		else {
+		}	else {
 			return 10;
 		}
 	}

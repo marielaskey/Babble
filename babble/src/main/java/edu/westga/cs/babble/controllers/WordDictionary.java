@@ -23,7 +23,7 @@ public class WordDictionary {
 	 * Creates a new WordDictionary
 	 */
 	public WordDictionary() {
-		langTool = new JLanguageTool(new AmericanEnglish());
+		this.langTool = new JLanguageTool(new AmericanEnglish());
 	}
 	
 	/**
@@ -42,11 +42,10 @@ public class WordDictionary {
 		
 		AnnotatedText text = new AnnotatedTextBuilder().addText(word).build();
 		try {
-			List<RuleMatch> matches = langTool.check(text);
+			List<RuleMatch> matches = this.langTool.check(text);
 			return matches.isEmpty();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException exception) {
+			exception.printStackTrace();
 			return false;
 		}
 	}

@@ -3,7 +3,13 @@ package edu.westga.cs.babble.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class that sets up configurations for the tiles in the game
+ * 
+ * @author lewisb
+ * @version 6241
+ * 
+ */
 public abstract class TileGroup {
 
 	private List<Tile> tiles;
@@ -28,7 +34,7 @@ public abstract class TileGroup {
 	 * @param tile the Tile to append
 	 */
 	public void append(Tile tile) {
-		if(tile==null) {
+		if (tile == null) {
 			throw new IllegalArgumentException("tile cannot be null");
 		}
 		
@@ -58,12 +64,14 @@ public abstract class TileGroup {
 	
 	/**
 	 * Stringifies the contents of the rack as the tile characters, in order of containment.
+	 * 
+	 * @return str	the string version of the rack contents
 	 */
 	public String getHand() {
-		String s = "";
-		for(Tile t: this.tiles) {
-			s += t.getLetter();
+		String str = "";
+		for (Tile tile: this.tiles) {
+			str += tile.getLetter();
 		}
-		return s;
+		return str;
 	}
 }
