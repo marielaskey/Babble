@@ -1,7 +1,5 @@
 package edu.westga.cs.babble.model;
 
-import java.util.ArrayList;
-
 /**
  * A candidate word made up of tiles and their points
  * @author lewisb
@@ -17,9 +15,14 @@ public class PlayedWord extends TileGroup {
 		
 	}
 	
+	/**
+	 * creates a tilegroup from the given wordText string
+	 * 
+	 * @param wordText the characters in the word string
+	 */
 	public PlayedWord(String wordText) {
-		for (char c : wordText.toCharArray()) {
-			append(new Tile(c));
+		for (char ch : wordText.toCharArray()) {
+			append(new Tile(ch));
 		}
 	}
 
@@ -30,8 +33,8 @@ public class PlayedWord extends TileGroup {
 	 */
 	public int getScore() {
 		int score = 0;
-		for(Tile t: super.tiles()) {
-			score += t.getPointValue();
+		for (Tile tile: super.tiles()) {
+			score += tile.getPointValue();
 		}
 		return score;
 	}
