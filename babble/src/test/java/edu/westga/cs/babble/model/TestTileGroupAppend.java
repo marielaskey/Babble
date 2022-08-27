@@ -59,6 +59,23 @@ public class TestTileGroupAppend {
 	}
 	
 	/**
+	 * Tests that the same tile object cannot be added twice
+	 * 
+	 */
+	@Test
+	public void cannotAddSameTileMoreThanOnce() {
+		TileGroupConcrete tileGroup = new TileGroupConcrete();
+		try {
+			Tile tile1 = new Tile('A');
+			tileGroup.append(tile1);
+			tileGroup.append(tile1);
+		} catch (IllegalArgumentException exception) {
+			assertEquals("can not add same tile twice", exception.getMessage());
+		}
+		
+	}
+	
+	/**
 	 * Tests that there are many tiles in the group after multiple
 	 * tiles have been appended.
 	 * 
