@@ -2,10 +2,7 @@ package edu.westga.cs.babble.views;
 
 import edu.westga.cs.babble.controllers.WordDictionary;
 import edu.westga.cs.babble.model.EmptyTileBagException;
-import edu.westga.cs.babble.model.PlayedWord;
 import edu.westga.cs.babble.model.TileBag;
-import edu.westga.cs.babble.model.TileGroup;
-import edu.westga.cs.babble.model.TileRack;
 
 /**
  * Class for GUI behavior
@@ -18,9 +15,6 @@ import edu.westga.cs.babble.model.TileRack;
 public class GuiController {
 	
 	private TileBag gameBag;
-	private PlayedWord word;
-	private TileGroup gameTileGroup;
-	private TileRack gameTileRack;
 	private TileListModel tileList;
 	private WordDictionary gameDictionary;
 	private int score;
@@ -39,42 +33,6 @@ public class GuiController {
 			}
 		}
 		this.gameDictionary = new WordDictionary();
-	}
-
-	/**
-	 * getter method for the tile group
-	 * 
-	 * @return the gameBag
-	 */
-	public TileBag getTileBag() {
-		return this.gameBag;
-	}
-
-	/**
-	 * getter method for the word played
-	 * 
-	 * @return the word played
-	 */
-	public PlayedWord getPlayedWord() {
-		return this.word;
-	}
-	
-	/**
-	 * getter method for TileGroup
-	 * 
-	 * @return the gameTileGroup
-	 */
-	public TileGroup getGameTileGroup() {
-		return this.gameTileGroup;
-	}
-
-	/**
-	 * getter method for TileRack
-	 * 
-	 * @return the gameTileRack
-	 */
-	public TileRack getGameTileRack() {
-		return this.gameTileRack;
 	}
 	
 	/**
